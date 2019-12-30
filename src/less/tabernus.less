@@ -1,0 +1,388 @@
+@import "../../node_modules/bootstrap/less/variables.less";
+
+@import "./theme.less";
+
+@import "../../node_modules/bootstrap/less/mixins.less";
+
+// Reset and dependencies
+@import "../../node_modules/bootstrap/less/normalize.less";
+@import "../../node_modules/bootstrap/less/print.less";
+@import "../../node_modules/bootstrap/less/glyphicons.less";
+
+// Core CSS
+@import "../../node_modules/bootstrap/less/scaffolding.less";
+@import "../../node_modules/bootstrap/less/type.less";
+@import "../../node_modules/bootstrap/less/code.less";
+@import "../../node_modules/bootstrap/less/grid.less";
+@import "../../node_modules/bootstrap/less/tables.less";
+@import "../../node_modules/bootstrap/less/forms.less";
+@import "../../node_modules/bootstrap/less/buttons.less";
+
+// Components
+@import "../../node_modules/bootstrap/less/component-animations.less";
+@import "../../node_modules/bootstrap/less/dropdowns.less";
+@import "../../node_modules/bootstrap/less/button-groups.less";
+@import "../../node_modules/bootstrap/less/input-groups.less";
+@import "../../node_modules/bootstrap/less/navs.less";
+@import "../../node_modules/bootstrap/less/navbar.less";
+@import "../../node_modules/bootstrap/less/breadcrumbs.less";
+@import "../../node_modules/bootstrap/less/pagination.less";
+@import "../../node_modules/bootstrap/less/pager.less";
+@import "../../node_modules/bootstrap/less/labels.less";
+@import "../../node_modules/bootstrap/less/badges.less";
+@import "../../node_modules/bootstrap/less/jumbotron.less";
+@import "../../node_modules/bootstrap/less/thumbnails.less";
+@import "../../node_modules/bootstrap/less/alerts.less";
+@import "../../node_modules/bootstrap/less/progress-bars.less";
+@import "../../node_modules/bootstrap/less/media.less";
+@import "../../node_modules/bootstrap/less/list-group.less";
+@import "../../node_modules/bootstrap/less/panels.less";
+@import "../../node_modules/bootstrap/less/responsive-embed.less";
+@import "../../node_modules/bootstrap/less/wells.less";
+@import "../../node_modules/bootstrap/less/close.less";
+
+// Components w/ JavaScript
+@import "../../node_modules/bootstrap/less/modals.less";
+@import "../../node_modules/bootstrap/less/tooltip.less";
+@import "../../node_modules/bootstrap/less/popovers.less";
+@import "../../node_modules/bootstrap/less/carousel.less";
+
+// Utility classes
+@import "../../node_modules/bootstrap/less/utilities.less";
+@import "../../node_modules/bootstrap/less/responsive-utilities.less";
+
+@content-padding-vertical: @navbar-height + @navbar-margin-bottom;
+@expanded-group-indicator-width: 2px;
+@basket-item-count-width: 100px;
+@navbar-height: 80px;
+@navbar-padding-horizontal: 10px;
+
+body {
+  padding-bottom: @content-padding-vertical;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar-text {
+  font-size: 18px;
+}
+
+.navbar-nav > li > a {
+  font-size: 18px;
+}
+
+.logo {
+  color: @btn-warning-color;
+  background-color: @btn-warning-bg;  
+  padding: @padding-base-vertical @padding-base-horizontal;
+  border-radius: 4px;
+  border: 1px solid @gray-lighter;
+  margin-top: -5px;
+}
+
+.logo img {
+  float: left;
+  margin-right: 2 * @padding-base-vertical;
+}
+
+.content {
+  padding-top: @content-padding-vertical;
+  width: @container-large-desktop;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.group a:link,
+.group a:visited {
+  outline: none;
+  text-decoration: none;
+}
+
+.group a:hover,
+.group a:active {
+  outline: none;
+  text-decoration: none;
+}
+
+.groups {
+  list-style: none;
+  margin-bottom: 0px;
+  padding-left: 0px;
+}
+
+.group a {
+  padding-left: @padding-large-horizontal;
+  padding-top: @padding-small-vertical;
+  padding-bottom: @padding-small-vertical;
+}
+
+.group a.is-expanded {
+  border-left: @expanded-group-indicator-width darken(@link-color, 10%) solid;
+  color: darken(@link-color, 10%);
+  font-weight: bold;
+}
+
+.group a[data-level="0"].is-expanded {
+  margin-left: -@expanded-group-indicator-width;
+}
+
+.group a[data-level="1"] {
+  font-size: @font-size-base;
+  padding-left: @padding-large-horizontal;
+}
+
+.group a[data-level="1"].is-expanded {
+  padding-left: @padding-large-horizontal - @expanded-group-indicator-width;
+}
+
+.group a[data-level="2"] {
+  padding-left: 2 * @padding-base-horizontal;
+  font-size: @font-size-small;
+  font-weight: 500;
+}
+
+.basket-contents input[type="number"] {
+  width: @basket-item-count-width;
+}
+
+.basket-contents select {
+  width: @basket-item-count-width;
+}
+
+.group a[data-level="2"].is-expanded {
+  padding-left: 2 * @padding-base-horizontal - @expanded-group-indicator-width;
+}
+
+.group a[data-level="3"] {
+  padding-left: 3 * @padding-base-horizontal;
+  font-size: @font-size-small;
+  font-weight: 500;
+}
+
+.group a[data-level="3"].is-expanded {
+  padding-left: 3 * @padding-base-horizontal - @expanded-group-indicator-width;
+}
+
+.sub-groups div {
+  cursor: pointer;
+}
+
+.sub-groups .row {
+  margin-bottom: @padding-small-vertical;
+}
+
+.sub-groups .row div a {
+  padding: @padding-small-horizontal;
+  display: block;
+  font-weight: bold;
+}
+
+.sub-groups .item-count {
+  color: lighten(@gray-light, 10%);
+}
+
+.items-list td.image {
+  max-width: 64px;
+  max-height: 64px;
+}
+
+.items-list td.image img {
+  max-width: 64px;
+  max-height: 64px;
+  margin: auto;
+}
+
+.items-list td.price,
+.items-list th.price {
+  text-align: right;
+}
+
+.items-list .unit-of-measurement {
+  clear: both;
+  float: right;
+}
+
+.items-list .add-to-basket {
+  float: right;
+}
+
+.items-list span.label {
+  margin-right: @padding-small-vertical;
+}
+
+span.item-available {
+  color: @brand-success;
+}
+
+span.item-not-available {
+  color: @brand-danger;
+}
+
+.items-list td.itemOnSale {
+  color: @brand-danger;
+}
+
+.additional-filters {
+  float: right;
+}
+
+div.basket {
+  margin-top: @padding-large-vertical;
+}
+
+.basket-button {
+  margin-right: 2 * @padding-large-horizontal;
+}
+
+.basket-contents table td.price {
+  text-align: right;
+}
+
+.basket-contents table td.total-price {
+  font-size: @font-size-large;
+}
+
+.basket-contents .subtotal-wo-vat {
+  font-size: @font-size-small;
+}
+
+.basket-contents .total {
+  font-size: @font-size-large;
+}
+
+.basket-contents td.image {
+  max-width: 50px;
+}
+
+.basket-contents td.image {
+  height: auto;
+  width: auto;
+}
+
+.basket-summary .dropdown {
+  margin-top: @padding-large-vertical;
+  margin-bottom: @padding-large-vertical;
+  cursor: pointer;
+}
+
+.basket-summary button {
+  margin-top: @padding-large-vertical;
+}
+
+.basket-summary .dropdown button {
+  text-align: left;
+}
+
+.items-grid {
+  clear: both;
+}
+
+.items-grid img {
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 120px;
+  max-width: 120px;
+}
+
+.items-grid div.labels {
+  height: 32px;
+}
+
+.items-grid .cell {
+  box-shadow: inset 0 0 0 1px @gray-lighter;
+  height: 400px;
+  margin: 0 -1px -1px 0;
+}
+
+.items-grid div.picture {
+  padding-top: 24px;
+  text-align: center;
+  height: 160px;
+}
+
+.items-grid div.name {
+  bottom: 160px;
+  text-align: center;
+}
+
+.items-grid div.name a {
+  font-weight: bold;
+}
+
+.items-grid div.description {
+  bottom: 100px;
+}
+
+.items-grid div.price {
+  bottom: 60px;
+}
+
+.items-grid div.basket {
+  margin-right: 16px;
+  bottom: 16px;
+}
+
+.items-grid .cell-row {
+  position: absolute;
+  left: 0;
+  padding: 0 16px;
+  width: 100%;
+}
+
+.no-items-found {
+  clear: both;
+  margin-top: 8px;
+}
+
+.item-detail img {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.item-detail .meta-data {
+  min-height: 240px;
+}
+
+.item-detail .row.basket {
+  margin-top: 16px;
+}
+
+.catalog-body {
+  padding-bottom: 48px;
+}
+
+.navbar li a:hover:not(.btn) {
+  text-decoration: underline;
+}
+
+.panel-primary .panel-heading a {
+  color: @gray-lighter;
+}
+
+.navbar-brand img {
+  height: 100%;
+}
+
+span.label.label-default {
+  background-color: transparent;
+  color: @gray-light;
+  border: 1px solid @gray-light;
+}
+
+.orders-table tr {
+  cursor: pointer;
+}
+
+.price-per-peasurement-unit {
+  font-size: @font-size-h2;
+}
+
+.price-header {
+  font-size: @font-size-h2;
+}
+
+.item-hidden {
+  text-decoration: line-through;
+}

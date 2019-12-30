@@ -1,0 +1,8 @@
+/node_modules
+/__sapper__
+/dist
+yarn.lock
+yarn.error
+.vscode
+/bin
+/obj

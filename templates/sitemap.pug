@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+urlset(xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd")
+    url
+        loc #{websiteAddress}
+        changefreq daily
+    url
+        loc #{websiteAddress}/about
+        changefreq daily
+    url
+        loc #{websiteAddress}/termsAndConditions
+        changefreq daily
+    url
+        loc #{websiteAddress}/catalog/on_sale/items
+        changefreq daily
+    url
+        loc #{websiteAddress}/catalog/new_items/items
+        changefreq daily
+    each group in groups
+        url 
+            loc #{websiteAddress}/catalog/#{group.slug}/items
+            changefreq daily
+    each item in items
+        url 
+            loc #{websiteAddress}/catalog/#{item.group.slug}/item/#{item.slug}
+            changefreq daily
+

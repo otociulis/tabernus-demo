@@ -1,0 +1,21 @@
+[
+  {
+    "firmName": "Company",
+    "ICO": "123456789",
+    "ICDPH": "12345679",
+    "ICDPHPrefix": "US",
+    "showMeasurement": true,
+    "showPriceWithVAT": true,
+    "showNavigator": true,
+    "showSubGroups": true,
+    "numberOfRowSubGroups": 3,
+    "name": "Full Company Name",
+    "street": "Street",
+    "zipCode": "ZIP",
+    "town": "City",
+    "telNumber": "Tel Number",
+    "telNumberPrefix": "+1",
+    "email": "void@void.com",
+    "language": "en"
+  }
+]

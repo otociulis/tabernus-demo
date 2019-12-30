@@ -1,0 +1,118 @@
+doctype html
+html(lang="en")
+    head
+    body
+        h3= t('orderConfirmation.title', order)
+        hr
+        b= t('orderConfirmation.listOfItems')
+
+        - var cbVATTemplateShow = config["cbVATTemplateShow"] === 'True';        
+
+        table
+            thead
+                tr
+                    th= t('items.header.code')
+                    th= t('items.header.name')
+                    th= t('orderConfirmation.header.count')
+                    th= t('items.header.price')
+                    th= t('orderConfirmation.header.total')
+            tbody
+                - var total = 0, totalWoVat = 0
+                each orderItem in orderItems
+                    - var itemPrice = cbVATTemplateShow ? orderItem.priceWithVAT : orderItem.price
+                    - total += itemPrice * orderItem.count
+                    - totalWoVat += orderItem.price * orderItem.count
+                    tr
+                        td
+                            b= orderItem.code
+                        td
+                            b= orderItem.name
+                        td(style="text-align: right")= orderItem.count
+                        td(style="text-align: right")= numbro(itemPrice).formatCurrency()
+                            if cbVATTemplateShow
+                            br 
+                            small= t('items.priceWithoutVAT', { price: numbro(orderItem.price).formatCurrency() })
+                        td(style="text-align: right")= numbro(itemPrice * orderItem.count).formatCurrency()
+                            if cbVATTemplateShow
+                                br
+                                small= t('items.priceWithoutVAT', { price: numbro(orderItem.price * orderItem.count).formatCurrency() })
+
+            
+            - total += payment.price
+            - totalWoVat += payment.price
+
+            tr
+                td(colspan=3)= payment.name
+                td(style="text-align: right")=numbro(payment.price).formatCurrency()
+
+            if cbVATTemplateShow
+                tr
+                    th(style="text-align: right", colspan=3)= t('orderConfirmation.total.withoutVAT')
+                    td(style="text-align: right")= numbro(totalWoVat).formatCurrency()
+            tr
+                th(style="text-align: right", colspan=3)= t('orderConfirmation.total.withVAT')
+                th(style="text-align: right")= numbro(total).formatCurrency()
+
+        hr
+
+        table
+            tr
+                td
+                    b= t('checkout.invoicingAddress')
+                    p #{invoicingAddress.name} #{invoicingAddress.surname}
+                        if order.companyName
+                            br
+                            span= order.companyName
+
+                        br
+                        span= invoicingAddress.street
+                        br
+                        span= invoicingAddress.zip                        
+                        span= invoicingAddress.city
+                        br
+                        span= t('checkout.email')
+                        span= invoicingAddress.email
+                        br
+                        span= t('checkout.phone')
+                        span= invoicingAddress.phone
+
+                        if order.companyIdentificationNumber
+                            br
+                            span= t('checkout.companyIdentificationNumber')
+                            span= order.companyIdentificationNumber
+                        
+                        if order.taxpayerIdentificationNumber
+                            br
+                            span= t('checkout.taxpayerIdentificationNumber')
+                            span= order.taxpayerIdentificationNumber
+
+                        if order.VATIdentificationNumber
+                            br
+                            span= t('checkout.VATIdentificationNumber')
+                            span= order.VATIdentificationNumber
+                            
+                if deliveryAddress != null
+                    td
+                        b= t('checkout.deliveryAddress')
+                        p #{deliveryAddress.name} #{deliveryAddress.surname}
+                            br
+                            span= deliveryAddress.street
+                            br
+                            span= deliveryAddress.zip
+                            span= deliveryAddress.city
+                            br
+                            span= t('checkout.email')
+                            span= deliveryAddress.email
+                            br
+                            span= t('checkout.phone')
+                            span= deliveryAddress.phone
+
+        hr
+        
+        
+
+
+
+
+
+        

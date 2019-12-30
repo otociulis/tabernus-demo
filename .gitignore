@@ -6,3 +6,5 @@ yarn.error
 .vscode
 /bin
 /obj
+/yarn-error.log
+/.vscode

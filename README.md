@@ -28,6 +28,7 @@ Goal of Tabernus is to provide baseline e-shop website that can be run on free h
 * [x] Initial data seeding
 * [x] Nested groups, searching, sorting, filtering, grid & list view, item details ...
 * [ ] Responsive design
+* [ ] Paging
 
 # Deployment guide
 

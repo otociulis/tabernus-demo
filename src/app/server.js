@@ -24,10 +24,6 @@ const ssrLoader = {
     }
     const realUrl = dev ? url : `${websiteAddress}/${url}`;
 
-    console.log("``````");
-    console.log(realUrl);
-    console.log("``````");
-
     return nodeFetch(realUrl, init);
   }
 };

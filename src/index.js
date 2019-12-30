@@ -6,6 +6,7 @@ const { GraphQLApp } = require("@keystonejs/app-graphql");
 const { AdminUIApp } = require("@keystonejs/app-admin-ui");
 const slugify = require("./slugify");
 const path = require("path");
+const generator = require("generate-password");
 
 const UsersSchema = require("./lists/Users.js");
 const PaymentsSchema = require("./lists/Payments.js");
@@ -30,6 +31,35 @@ const keystone = new Keystone({
   secureCookies: false,
   adapter: new MongooseAdapter(),
   onConnect: async () => {
+    const users = await keystone.lists.User.adapter.findAll();
+
+    if (!users.length) {
+      console.warn("");
+      console.warn("=============================");
+
+      const password = generator.generate({
+        length: 10,
+        numbers: true
+      });
+
+      const admin = {
+        name: 'Admin',
+        email: 'void@void.com',
+        password,
+        isAdmin: true
+      }
+
+      await keystone.createItems({
+        User: [admin]
+      });
+
+      console.warn(`Admin username: ${admin.email}`);
+      console.warn(`Admin password: ${admin.password}`);
+
+      console.warn("=============================");
+      console.warn("");
+    }
+
     let configurations = await keystone.lists.Configuration.adapter.findAll();
 
     if (!configurations.length) {
@@ -122,7 +152,7 @@ function sendEmail(email, locals, options) {
 const sendConfirmationEmail = async (_, { data }) => {
   const { Order, OrderItem, Payment, Address } = keystone.lists;
 
-  // Not sure why Order.adapter.findById doesn't return `items` so I have to 
+  // Not sure why Order.adapter.findById doesn't return `items` so I have to
   // query it directly from Mongoose
   const order = await Order.adapter.mongoose.models.Order.findById(data);
 
@@ -134,9 +164,9 @@ const sendConfirmationEmail = async (_, { data }) => {
     ? await Address.adapter.findById(order.deliveryAddress)
     : undefined;
 
-  const orderItems = await Promise.all(order.items.map(
-    id => OrderItem.adapter.findById(id)
-  ));
+  const orderItems = await Promise.all(
+    order.items.map(id => OrderItem.adapter.findById(id))
+  );
 
   logger.info(`Sending email for order ${data} [${orderItems.length}] items`);
 
@@ -165,7 +195,7 @@ const sendConfirmationEmail = async (_, { data }) => {
     from: configuration.emailFrom,
     to: deliveryAddress ? deliveryAddress.email : invoicingAddress.email,
     bcc: configuration.emailBcc,
-    subject: i18n.t('orderConfirmation.subject')
+    subject: i18n.t("orderConfirmation.subject")
   });
 
   return order.id;

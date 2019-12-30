@@ -9,6 +9,7 @@
     "showNavigator": true,
     "showSubGroups": true,
     "numberOfRowSubGroups": 3,
+    "shortDescriptionLength": 54,
     "name": "Full Company Name",
     "street": "Street",
     "zipCode": "ZIP",
@@ -16,6 +17,7 @@
     "telNumber": "Tel Number",
     "telNumberPrefix": "+1",
     "email": "void@void.com",
-    "language": "en"
+    "language": "en",
+    "landingPageText": "Welcome to the Tabernus!"
   }
 ]

@@ -1,10 +1,5 @@
 # Tabernus
 
-Click [here](https://tabernus-demo.herokuapp.com/) for demo website and [here](https://tabernus-demo.herokuapp.com/admin) for demo read-only admin UI with following credentials:
-
-Username: `admin`
-Password: `p4$$w0rd`
-
 Goal of Tabernus is to provide baseline e-shop website that can be run on free hosting services but offering rich feature set including:
 
 * [x] Persistence layer - [MongoDB](https://www.mongodb.com/) and [Mongoose ODM](https://mongoosejs.com/)

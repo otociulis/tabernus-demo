@@ -1,12 +1,5 @@
 # Tabernus
 
-Click [here](https://tabernus-demo.herokuapp.com/) for demo website and 
-[here](https://tabernus-demo.herokuapp.com/admin) for demo read-only admin UI 
-with following credentials:
-
-Username: `admin`
-Password: `p4$$w0rd`
-
 All code for demo website can be found in 
 [tabernus-demo](https://github.com/otociulis/tabernus-demo) repository.
 
